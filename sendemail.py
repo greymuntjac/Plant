@@ -1,17 +1,19 @@
-import RPi.GPIO as GPIO
-import time 
-channel=4
-GPIO.setmode(GPIO.BCM)
-GPIO.setup(channel,GPIO.IN)
+import smtplib
+from email.message import EmailMessage
 
-def callback(channel):
-  if GPIO.input(channel):
-    print ("Water Detected!")
-  else:
-    print ("More Water")
+from_email_addr="greymuntjac@qq.com"
+from_email_pass="cmsccfefjccmcjgf"
+to_email-addr="3460532268@qq.com"
 
-GPIO.add_event_detect(channel,GPIO.BOTH,bouncetime=300)
-GPIO.add_event_callback(channel,callback)
-
-while True:
-  time.sleep(0)
+msg=EmailMessage()
+body="Hello "
+msg set_content(body)
+msg['From']=from_email_addr
+msg['To']=to_email_addr
+msg['Subject']='TEST EMAIL'
+server.SMTP('smtp.qq.com',587)
+server.starttls()
+server.login(from_email_addr,from_email_pass)
+server.send_message(msg)
+print('Email sent')
+server.quit()
